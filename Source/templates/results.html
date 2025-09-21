@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Sentiment Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Reusable URL input form -->
+    <h2>Enter Stream URL (YouTube or Twitch)</h2>
+    <form action="/analyze" method="post">
+        <input type="text" name="yt_url" placeholder="Paste YouTube or Twitch URL here" size="50">
+        <button type="submit">Analyze</button>
+    </form>
+
+    <hr>
+
+    <!-- Sentiment chart -->
+    <h3>Live Sentiment Distribution</h3>
+    <div style="width: 400px; height: 400px; margin: auto; border: 1px solid #ccc; padding: 10px; border-radius: 10px;">
+        <canvas id="sentimentChart"></canvas>
+    </div>
+
+    <script>
+        // Injected from Flask (passed in render_template)
+        const platform = "{{ platform }}";       // "youtube" or "twitch"
+        const identifier = "{{ identifier }}";   // video_id (YT) OR channel_name (Twitch)
+
+        const ctx = document.getElementById('sentimentChart').getContext('2d');
+        let chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Positive', 'Negative', 'Neutral'],
+                datasets: [{
+                    label: 'Sentiment',
+                    data: [0, 0, 0], // start empty
+                    backgroundColor: ['#4CAF50', '#F44336', '#FFEB3B']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Poll Flask API every 5 seconds for updated sentiment counts
+        function fetchData() {
+            fetch(`/sentiment-data/${platform}/${identifier}`)
+                .then(res => res.json())
+                .then(data => {
+                    chart.data.datasets[0].data = [data.positive, data.negative, data.neutral];
+                    chart.update();
+                })
+                .catch(err => console.error("Error fetching data:", err));
+        }
+
+        setInterval(fetchData, 5000); // update every 5s
+        fetchData(); // run once on load
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Sentiment History for Video: {{ video_id }}</h2>
+    <canvas id="historyChart" width="800" height="400"></canvas>
+
+    <script>
+        const ctx = document.getElementById('historyChart').getContext('2d');
+        const data = {{ data | tojson }};
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.timestamps,
+                datasets: [
+                    {
+                        label: "Positive",
+                        data: data.positive,
+                        borderColor: "#4CAF50",
+                        fill: false
+                    },
+                    {
+                        label: "Negative",
+                        data: data.negative,
+                        borderColor: "#F44336",
+                        fill: false
+                    },
+                    {
+                        label: "Neutral",
+                        data: data.neutral,
+                        borderColor: "#FFEB3B",
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: "Timestamp" } },
+                    y: { title: { display: true, text: "Count" }, beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

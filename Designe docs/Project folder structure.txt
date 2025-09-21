@@ -1,0 +1,35 @@
+live-chat-sentiment/
+│── app.py                   # Main Flask entry point
+│── requirements.txt          # Python dependencies
+│── config.py                 # Configurations (API keys, DB creds)
+│── .env                      # Environment variables (keep secrets here)
+│
+├── api/                      # API endpoints
+│   ├── __init__.py
+│   ├── youtube_routes.py     # Routes for YouTube chat fetching
+│   ├── twitch_routes.py      # Routes for Twitch chat fetching
+│
+├── services/                 # Business logic / external API handling
+│   ├── __init__.py
+│   ├── youtube_service.py    # Handles YouTube API calls
+│   ├── twitch_service.py     # Handles Twitch API calls
+│
+├── ml/                       # Machine Learning models
+│   ├── __init__.py
+│   ├── preprocessing.py      # Text cleaning (stopwords, stemming, etc.)
+│   ├── sentiment_model.py    # Model loading & prediction
+│
+├── db/                       # Database layer
+│   ├── __init__.py
+│   ├── models.py             # SQLAlchemy models
+│   ├── db_utils.py           # Helpers for saving/fetching chat data
+│
+├── utils/                    # Helper functions
+│   ├── __init__.py
+│   ├── logger.py             # Central logging setup
+│   ├── common.py             # Any shared utility functions
+│
+└── tests/                    # Unit tests
+    ├── test_youtube.py
+    ├── test_twitch.py
+    ├── test_sentiment.py

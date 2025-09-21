@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History Dashboard</title>
+</head>
+<body>
+    <h2>Sentiment History</h2>
+
+    <form method="get" action="/history">
+        <label for="video_id">Select a video:</label>
+        <select onchange="if(this.value) window.location='/history/' + this.value;">
+            <option value="">-- Select Video ID --</option>
+            {% for vid in video_ids %}
+                <option value="{{ vid }}">{{ vid }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</body>
+</html>
