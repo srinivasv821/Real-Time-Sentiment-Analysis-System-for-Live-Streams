@@ -16,19 +16,15 @@ Visualizes live + historical insights on an interactive dashboard
 🛠️ Tech Stack
 Machine Learning (ML/NLP)
 
-Preprocessing: Regex cleaning, stopword removal, stemming
-
-Vectorization: TF-IDF
+  1. Preprocessing: Regex cleaning, stopword removal, stemming
+  2. Vectorization: TF-IDF
 
 Models Built From Scratch:
 
-Logistic Regression
-
-SVM (Linear Kernel)
-
-Naive Bayes
-
-Deep Learning (ANN with Keras/TensorFlow)
+  1. Logistic Regression
+  2. SVM (Linear Kernel)
+  3. Naive Bayes
+  4. Deep Learning (ANN with Keras/TensorFlow)
 
 Evaluation: K-Fold Cross Validation
 
@@ -36,27 +32,21 @@ Deployment: Saved .pkl models (model + vectorizer + encoder)
 
 Backend
 
-Flask (Python)
-
-REST APIs for chat fetch + sentiment analysis
-
-PostgreSQL with SQLAlchemy ORM
-
-Flask-Migrate for schema evolution
+  1. Flask (Python)
+  2. REST APIs for chat fetch + sentiment analysis
+  3. PostgreSQL with SQLAlchemy ORM
+  4. Flask-Migrate for schema evolution
 
 Frontend
 
-HTML + Jinja Templates
-
-JavaScript (AJAX polling)
-
-Chart.js for live & historical visualizations
+  1. HTML + Jinja Templates
+  2. JavaScript (AJAX polling)
+  3. Chart.js for live & historical visualizations
 
 APIs
 
-YouTube Data API v3
-
-Twitch IRC (socket-based)
+  1. YouTube Data API v3
+  2. Twitch IRC (socket-based)
 
 📂 Project Structure
 /Source
@@ -105,87 +95,74 @@ negative_count	Integer	Count of negative messages
 neutral_count	Integer	Count of neutral messages
 ⚙️ Setup Instructions
 
-Clone Repo
+1. Clone Repo
 
-git clone https://github.com/yourusername/stream-sentiment-analysis.git
-cd stream-sentiment-analysis/Source
-
-
-Create Virtual Environment
-
-python -m venv venv
-source venv/bin/activate   # Mac/Linux
-venv\Scripts\activate      # Windows
+  git clone https://github.com/yourusername/stream-sentiment-analysis.git
+  cd stream-sentiment-analysis/Source
 
 
-Install Dependencies
+2. Create Virtual Environment
 
-pip install -r requirements.txt
-
-
-Configure .env
-Create a .env file in root:
-
-# YouTube
-YOUTUBE_API_KEY=your_youtube_api_key
-
-# Twitch
-TWITCH_NICK=yourusername
-TWITCH_TOKEN=oauth:your_twitch_token
-
-# PostgreSQL
-DATABASE_URL=postgresql://username:password@localhost:5432/sentiment_db
+  python -m venv venv
+  source venv/bin/activate   # Mac/Linux
+  venv\Scripts\activate      # Windows
 
 
-Initialize Database
+3. Install Dependencies
 
-flask db init
-flask db migrate -m "Initial migration"
-flask db upgrade
+  pip install -r requirements.txt
 
 
-Run Flask App
+4. Configure .env
+  Create a .env file in root:
 
-python app.py
+  # YouTube
+  YOUTUBE_API_KEY=your_youtube_api_key
+  
+  # Twitch
+  TWITCH_NICK=yourusername
+  TWITCH_TOKEN=oauth:your_twitch_token
+  
+  # PostgreSQL
+  DATABASE_URL=postgresql://username:password@localhost:5432/sentiment_db
+
+
+5. Initialize Database
+
+  flask db init
+  flask db migrate -m "Initial migration"
+  flask db upgrade
+
+
+6. Run Flask App
+
+  python app.py
 
 🎯 Usage
 
-Navigate to: http://127.0.0.1:5000/
-
-Enter a YouTube or Twitch URL
-
-See live sentiment distribution (pie chart updates every 5s)
-
-Access historical sentiment trends at /history
+  1. Navigate to: http://127.0.0.1:5000/  
+  2. Enter a YouTube or Twitch URL
+  3. See live sentiment distribution (pie chart updates every 5s)
+  4. Access historical sentiment trends at /history
 
 📊 Results
 
-✅ Real-time sentiment classification (Positive / Negative / Neutral)
-
-✅ Aggregated results every 10 messages stored in DB
-
-✅ Historical insights via line chart
-
-✅ Model deployment-ready with .pkl files
+  ✅ Real-time sentiment classification (Positive / Negative / Neutral)
+  ✅ Aggregated results every 10 messages stored in DB
+  ✅ Historical insights via line chart
+  ✅ Model deployment-ready with .pkl files
 
 🚧 Future Improvements
 
-Upgrade to Transformer models (BERT/DistilBERT) for richer semantics
-
-Support multi-language chat sentiment analysis
-
-Add moderation features (detect spam, toxicity)
-
-Containerize & deploy with Docker + AWS/GCP
-
-Add user authentication for secured dashboard access
+  1. Upgrade to Transformer models (BERT/DistilBERT) for richer semantics
+  2. Support multi-language chat sentiment analysis
+  3. Add moderation features (detect spam, toxicity)
+  4. Containerize & deploy with Docker + AWS/GCP
+  5. Add user authentication for secured dashboard access
 
 📌 Learnings
 
-How traditional ML models can outperform deep learning with medium-sized datasets
-
-Importance of vectorization (TF-IDF) in short/noisy text
-
-Designing production-ready ML pipelines with Flask + SQLAlchemy
-
-Handling real-time APIs & streaming data
+  1. How traditional ML models can outperform deep learning with medium-sized datasets
+  2. Importance of vectorization (TF-IDF) in short/noisy text
+  3. Designing production-ready ML pipelines with Flask + SQLAlchemy
+  4. Handling real-time APIs & streaming data
