@@ -3,7 +3,7 @@
 import requests
 import time
 
-API_KEY = "AIzaSyB6eWDwvPEfNsiRnbCTYghKQrjgByslk8g"
+API_KEY = "API_key_here"
 VIDEO_ID = "adHRJuob-2o"
 
 # Step 1: Get the liveChatId for the video
